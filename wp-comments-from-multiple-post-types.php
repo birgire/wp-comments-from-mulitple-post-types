@@ -15,13 +15,13 @@ License:     GPLv2
 defined( 'ABSPATH' ) or die( 'Nothing here!' );
 
 /**
- * Include the class:
+ * Include:
  */
 if( ! class_exists( 'WP_Comments_From_Multiple_Post_Types' ) )
 	require_once plugin_dir_path( __FILE__ )."inc/class.comments_from_mulitple_post_types.php";        
 
 /**
- * Activate the class:
+ * Activate:
  */
 add_action( 'plugins_loaded', array( 'WP_Comments_From_Multiple_Post_Types', 'get_instance' ) );
 

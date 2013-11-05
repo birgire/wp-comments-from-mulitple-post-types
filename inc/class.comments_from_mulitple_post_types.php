@@ -1,16 +1,35 @@
 <?php
 
 /**
- *  Class WP_Comments_From_Multiple_Post_Types
+ * No direct access
+ */
+defined( 'ABSPATH' ) or die( 'Nothing here!' );
+
+
+/**
+ * Class WP_Comments_From_Multiple_Post_Types
+ *
+ * @package     WordPress
+ * @author	birgire
+ * @since	0.1
+ *
  */
 
  class WP_Comments_From_Multiple_Post_Types
  {
 
+	/**
+         * Store the current instance
+	 * 
+	 * @access  private
+	 * @since   0.1
+	 * @var  object $instance
+	 */	
 	static private $instance = NULL;
         
+
 	/**
-         * Instanciate the class.
+         * Return the current instance
 	 * 
 	 * @access  public
 	 * @since   0.1
@@ -24,6 +43,7 @@
 		return self::$instance;            
 	}
 
+
 	/**
 	 * The constructor
 	 * 
@@ -33,9 +53,10 @@
  	 */
 	public function __construct() 
 	{
-		// register the shortcode
+		// register the filter
 		add_filter( 'comments_clauses', array( $this, 'comments_clauses' ), 99, 2 );
 	}        
+
              
 	/**
 	 * Support for multiple post types for comments
@@ -55,7 +76,7 @@
 		{       
 			$join = join( "', '", array_map( 'esc_sql', $wpqc->query_vars['post_type'] ) );
  
-			$from = "$wpdb->posts.post_type = '" . $wpqc->query_vars['post_type'][0] . "'";			 
+			$from = sprintf( "$wpdb->posts.post_type = '%s'", $wpqc->query_vars['post_type'][0] );			 
 			$to   = sprintf( "$wpdb->posts.post_type IN ( '%s' ) ", $join );
 
 			$clauses['where'] = str_replace( $from, $to, $clauses['where'] );
