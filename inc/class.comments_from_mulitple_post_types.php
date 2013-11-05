@@ -52,10 +52,12 @@
     		
 		// Add the multiple post type support.    
 		if( isset( $wpqc->query_vars['post_type'][0] ) )
-		{        
-			$from = "$wpdb->posts.post_type = '" . $wpqc->query_vars['post_type'][0] . "'";
-			$to   = "$wpdb->posts.post_type IN ( '" . join( "', '", $wpqc->query_vars['post_type'] ) . "' ) ";
-        
+		{       
+			$join = join( "', '", array_map( 'esc_sql', $wpqc->query_vars['post_type'] ) );
+ 
+			$from = "$wpdb->posts.post_type = '" . $wpqc->query_vars['post_type'][0] . "'";			 
+			$to   = sprintf( "$wpdb->posts.post_type IN ( '%s' ) ", $join );
+
 			$clauses['where'] = str_replace( $from, $to, $clauses['where'] );
 		}  
 
