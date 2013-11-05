@@ -7,7 +7,7 @@ WordPress - Comments From Mulitple Post Types
 
 This plugin adds multiple post types support to WP_Comment_Query() and get_comments().
 
-Previously you could only fetch a comment from a single post type, for example:
+Previously you could only fetch comments from a single post type, for example:
 
     $args = array(
         'number'    => 5,
@@ -16,7 +16,7 @@ Previously you could only fetch a comment from a single post type, for example:
 
     $comments = get_comments( $args )
 
-But with the plugin activated you can use an array of post types:
+But with the plugin activated you can use an array of post types, for example:
 
     $args = array(
         'number'    => 5,
