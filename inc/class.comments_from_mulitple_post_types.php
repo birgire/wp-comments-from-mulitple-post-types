@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) or die( 'Nothing here!' );
 	 * @since   0.1
 	 * @return  object $instance
 	 */
-	public function get_instance() 
+	static public function get_instance() 
 	{        
 		if ( NULL === self::$instance )
 			self::$instance = new self;
