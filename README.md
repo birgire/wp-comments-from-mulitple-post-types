@@ -3,7 +3,9 @@ wp-comments-from-mulitple-post-types
 
 WordPress - Comments From Mulitple Post Types
 
-###Description
+Note: This is now supported in WordPress core.
+
+### Description
 
 This plugin adds multiple post types support to WP_Comment_Query() and get_comments().
 
