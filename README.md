@@ -1,3 +1,5 @@
+NOTE: This project is archived as core now supports this feature.
+
 wp-comments-from-mulitple-post-types
 =================
 
